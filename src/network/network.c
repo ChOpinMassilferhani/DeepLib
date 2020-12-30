@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <err.h>
 
-size_t tab_size(size_t *tab)
+static size_t tab_size(size_t *tab)
 {
     size_t len = 0;
     while (*tab++)
@@ -12,7 +12,7 @@ size_t tab_size(size_t *tab)
     return len;
 }
 
-struct network *init_network(size_t *layers, struct function *func)
+struct network *network_init(size_t *layers, struct function *func)
 {
     size_t nb_layers = tab_size(layers);
     if (nb_layers < 3)
@@ -33,4 +33,19 @@ struct network *init_network(size_t *layers, struct function *func)
         init->layers[i] = matrice_init(layers[i], 1);
     }
     return init;
+}
+
+void network_free(struct network *net)
+{
+    for (size_t i = 0; i < net->nb_layer; i++)
+    {
+        matrice_free(net->weights[i]);
+        matrice_free(net->biais[i]);
+        matrice_free(net->layers[i]);
+    }
+    free(net->weights);
+    free(net->biais);
+    free(net->layers);
+
+    free(net);
 }

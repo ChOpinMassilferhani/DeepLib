@@ -23,6 +23,7 @@ double sigmoid(double x);
 double sigmoid_prime(double x);
 
 struct matrice *matrice_init(size_t height, size_t width);
+void matrice_free(struct matrice *cur);
 struct matrice *transpose( struct matrice *cur);
 void add(struct matrice *r, struct matrice *m1, struct matrice *m2);
 void mult(struct matrice *r, struct matrice *m1, struct matrice *m2);

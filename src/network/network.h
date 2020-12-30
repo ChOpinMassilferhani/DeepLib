@@ -9,3 +9,8 @@ struct network
     struct matrice **biais;
     struct matrice **weights;
 };
+
+
+struct network *network_init(size_t *layers, struct function *func);
+
+void network_free(struct network *net);

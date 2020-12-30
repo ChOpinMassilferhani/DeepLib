@@ -12,6 +12,12 @@ target_include_directories(
     )
 
 target_link_libraries(
+     mathtools
+     PRIVATE
+     m)
+
+
+target_link_libraries(
     mathtools
     PRIVATE
     )

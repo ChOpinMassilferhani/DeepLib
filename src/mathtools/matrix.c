@@ -31,6 +31,16 @@ struct matrice *matrice_init(size_t height, size_t width)
     return tmp;
 }
 
+void matrice_free(struct matrice *cur)
+{
+    if (cur)
+    {
+        free(cur->mat);
+        free(cur);
+    }
+}
+
+
 void add(struct matrice *r, struct matrice *m1, struct matrice *m2)
 {
     size_t len = m1->width * m1->height;

@@ -15,6 +15,7 @@ target_link_libraries(
     network
     PRIVATE
     mathtools
+    memory
     )
 
 set_target_properties(

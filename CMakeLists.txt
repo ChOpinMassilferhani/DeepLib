@@ -10,7 +10,6 @@ set(CMAKE_CXX_FLAGS_ASAN
    CACHE STRING "Flags used by the C++ compiler during AddressSanitizer builds."
    FORCE)
 
-add_link_options(-lm)
 
 if(NEED_COVERAGE)
     add_compile_options(-Wall -Wextra -pedantic -Werror -g --coverage)
@@ -19,7 +18,7 @@ else()
     add_compile_options(-Wall -Wextra -pedantic -Werror -g)
 endif()
 
+add_subdirectory(src)
 add_subdirectory(src/mathtools)
 add_subdirectory(src/network)
 add_subdirectory(src/memory)
-
