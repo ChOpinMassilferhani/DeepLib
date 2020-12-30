@@ -21,3 +21,5 @@ endif()
 
 add_subdirectory(src/mathtools)
 add_subdirectory(src/network)
+add_subdirectory(src/memory)
+

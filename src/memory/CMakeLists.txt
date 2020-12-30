@@ -1,30 +1,29 @@
 add_library(
-    mathtools
+    memory
     STATIC
-    matrix.c
+    memory.c
 )
 
 target_include_directories(
     mathtools
     PUBLIC
     .
-    ../memory
     )
 
 target_link_libraries(
-    mathtools
+    memory
     PRIVATE
     )
 
 set_target_properties(
-    mathtools
+    memory
     PROPERTIES
     C_STANDARD 99
     C_EXTENSIONS OFF
     )
 
 target_compile_definitions(
-    mathtools
+    memory
     PUBLIC
     "_GNU_SOURCE"
     )

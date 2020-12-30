@@ -3,7 +3,7 @@
 # include <time.h>
 # include <math.h>
 # include "mathtools.h"
-
+# include "memory.h"
 
 
 # define SIZE 1
@@ -24,10 +24,10 @@ double sigmoid_prime(double x)
 
 struct matrice *matrice_init(size_t height, size_t width)
 {
-    struct matrice *tmp = calloc(1,sizeof(struct matrice));
+    struct matrice *tmp = my_calloc(1,sizeof(struct matrice));
     tmp->height = height;
     tmp->width = width;
-    tmp->mat = calloc( height * width , sizeof(double) );
+    tmp->mat = my_calloc( height * width , sizeof(double) );
     return tmp;
 }
 
