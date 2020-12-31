@@ -6,11 +6,12 @@
 # include "memory.h"
 
 
-# define SIZE 1
-struct function activation_functions[SIZE] =
+void sigmoid_pad(struct matrice *tab)
 {
-    { .name = "sigmoid"  , .function = sigmoid, .prime = sigmoid_prime}
-};
+    for (size_t i = 0; i < tab->height; i++)
+        tab->mat[i] = sigmoid(tab->mat[i]);
+}
+
 
 double sigmoid(double x)
 {
@@ -41,7 +42,7 @@ void matrice_free(struct matrice *cur)
 }
 
 
-void add(struct matrice *r, struct matrice *m1, struct matrice *m2)
+void matrice_add(struct matrice *r, struct matrice *m1, struct matrice *m2)
 {
     size_t len = m1->width * m1->height;
     for (size_t i = 0; i < len; i++)
@@ -50,7 +51,7 @@ void add(struct matrice *r, struct matrice *m1, struct matrice *m2)
     }
 }
 
-void mult(struct matrice *r, struct matrice *m1, struct matrice *m2)
+void matrice_mult(struct matrice *r, struct matrice *m1, struct matrice *m2)
 {
     size_t r1 = m1->height;
     size_t c1 = m1->width;
@@ -67,7 +68,7 @@ void mult(struct matrice *r, struct matrice *m1, struct matrice *m2)
     }
 }
 
-void randomise_mat(struct matrice *cur)
+void matrice_randomise(struct matrice *cur)
 {
     size_t len = cur->width * cur->height;
     for (size_t i = 0; i < len; i++)
@@ -76,9 +77,9 @@ void randomise_mat(struct matrice *cur)
     }
 }
 
-struct matrice *transpose(struct matrice *cur)
+struct matrice *matrice_transpose(struct matrice *cur)
 {
-    struct matrice *final = matrice_init(cur->width,cur->width);
+    struct matrice *final = matrice_init(cur->width,cur->height);
 
     for (size_t i = 0; i < cur->height; i++)
     {
@@ -90,7 +91,7 @@ struct matrice *transpose(struct matrice *cur)
     return final;
 }
 
-void print_matrix(struct matrice *cur)
+void matrice_print(struct matrice *cur)
 {
     size_t rows = cur->height;
     size_t cols = cur->width;

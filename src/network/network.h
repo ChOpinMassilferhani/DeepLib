@@ -4,13 +4,16 @@
 struct network
 {
     size_t nb_layer;
-    struct function *activation;
+    size_t *layers_size;
+    void (*activation)(struct matrice *);
+    double (*derivative)(double);
     struct matrice **layers;
     struct matrice **biais;
     struct matrice **weights;
 };
 
 
-struct network *network_init(size_t *layers, struct function *func);
-
+struct network *network_init(size_t *layers, void (*func)(struct matrice *));
 void network_free(struct network *net);
+
+void feed_forward(struct network *net);

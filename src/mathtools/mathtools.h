@@ -11,24 +11,18 @@ struct matrice
     size_t width;
 };
 
-struct function
-{
-    char *name;
-    double (*function)(double);
-    double (*prime)(double);
-
-};
+void sigmoid_pad(struct matrice *cur);
 
 double sigmoid(double x);
 double sigmoid_prime(double x);
 
 struct matrice *matrice_init(size_t height, size_t width);
 void matrice_free(struct matrice *cur);
-struct matrice *transpose( struct matrice *cur);
-void add(struct matrice *r, struct matrice *m1, struct matrice *m2);
-void mult(struct matrice *r, struct matrice *m1, struct matrice *m2);
-void randomise_mat(struct matrice *cur);
-void print_matrix(struct matrice *cur);
+struct matrice *matrice_transpose( struct matrice *cur);
+void matrice_add(struct matrice *r, struct matrice *m1, struct matrice *m2);
+void matrice_mult(struct matrice *r, struct matrice *m1, struct matrice *m2);
+void matrice_randomise(struct matrice *cur);
+void matrice_print(struct matrice *cur);
 
 
 #endif

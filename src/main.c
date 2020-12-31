@@ -4,12 +4,11 @@
 #include "network.h"
 #include "mathtools.h"
 
+
 int main(void)
 {
-    struct function tmp=
-    { .name = "tmp", .function=sigmoid, .prime=sigmoid_prime};
-    size_t input[4] = { 1, 2 , 3, 0};
-    struct network *net = network_init(input,&tmp);
+    size_t input[4] = { 2, 3 , 2, 0};
+    struct network *net = network_init(input,sigmoid_pad);
+    feed_forward(net);
     network_free(net);
-    printf("toto\n");
 }
